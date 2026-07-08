@@ -1,10 +1,18 @@
 # AI Collaboration Governance Skills
 
-Hermes Loop Engineering for AI-assisted software delivery.
+Hermes Loop Engineering for self-improving AI delivery governance.
 
-This is a human-in-the-loop self-improvement skill pack. It helps AI agents turn disputed acceptance, weak evidence, overbroad completion claims, and owner-boundary mistakes into reusable governance improvements.
+AI coding agents do not only fail by writing bad code. They also fail by:
 
-The goal is not only to prevent bad handoffs. The goal is to make the collaboration loop learn from every repeated delivery mistake without turning every mistake into a heavy rule.
+- accepting weak evidence,
+- fixing before UAT intake,
+- routing owners too early,
+- turning one failure into a heavy rule,
+- repeating the same delivery mistake in the next task.
+
+This repo provides lightweight agent skills, templates, and examples that help AI teams turn delivery failures into reusable governance improvements.
+
+The loop:
 
 ```text
 failure
@@ -16,6 +24,8 @@ failure
 -> forward-test
 -> keep / revise / promote / drop
 ```
+
+Self-improvement here does not mean automatic model training. It means later agents make better delivery decisions because earlier failures were captured, bounded, tested, and converted into human-reviewed skills or templates.
 
 ## What This Helps Prevent
 
