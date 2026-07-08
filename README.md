@@ -1,8 +1,21 @@
 # AI Collaboration Governance Skills
 
-Stop AI agents from turning weak evidence into `accepted`, fixing before intake, or assigning owners without mechanism evidence.
+Hermes Loop Engineering for AI-assisted software delivery.
 
-This is a small public skill pack for AI-assisted software delivery. It helps agents pause at the right boundary before they repair code, close acceptance, or route work to an owner.
+This is a human-in-the-loop self-improvement skill pack. It helps AI agents turn disputed acceptance, weak evidence, overbroad completion claims, and owner-boundary mistakes into reusable governance improvements.
+
+The goal is not only to prevent bad handoffs. The goal is to make the collaboration loop learn from every repeated delivery mistake without turning every mistake into a heavy rule.
+
+```text
+failure
+-> intake
+-> evidence boundary
+-> scoped failed gate
+-> trial observation
+-> skill / template refinement
+-> forward-test
+-> keep / revise / promote / drop
+```
 
 ## What This Helps Prevent
 
@@ -12,6 +25,7 @@ This is a small public skill pack for AI-assisted software delivery. It helps ag
 | Mock, inherited, visual, or partial evidence gets reported as workflow acceptance. | `evidence-boundary` |
 | `accepted`, `passed`, `closed`, `ready`, or `done` wording exceeds the verified scope. | `acceptance-scope-control` |
 | A shared owner is assigned from source location or imports instead of reproduction breadth and mechanism evidence. | `owner-boundary-triage` |
+| A repeated failure becomes either noise or a heavy rule without observation and testing. | `hermes-loop-engineering` |
 
 ## Quick Example
 
@@ -27,6 +41,8 @@ With these skills:
 -> re-check what the prior receipt actually covered
 -> identify the smallest failed gate or missing evidence
 -> decide the next owner only after the boundary is clear
+-> record whether this is a one-off, repeated pattern, or candidate improvement
+-> revise skill/template wording only after observation and forward-test support it
 ```
 
 ## v0.1 Scope Verdict
@@ -37,6 +53,7 @@ v0.1 的最小范围是合理的，但必须保持为一个小型治理闭环，
 2. 当前证据能支撑什么结论，不能支撑什么结论。
 3. `accepted`、`passed`、`closed` 等结论是否超出了实际覆盖范围。
 4. 问题应该回到哪个 owner，而不是由当前 AI 直接修复或扩展验收。
+5. 失败是否值得沉淀为可复用治理改进，还是只应保持为 observation。
 
 ## Non-Goals
 
@@ -44,6 +61,7 @@ v0.1 的最小范围是合理的，但必须保持为一个小型治理闭环，
 - 不包含发布、CI、远端仓库、issue board 或 PR 自动化。
 - 不替代人工最终验收。
 - 不承诺仅凭单次检查即可关闭整类问题。
+- 不自动训练模型；自改进发生在 human-reviewed skills, templates, examples, and forward tests.
 - 不收录 actual organization, tenant, person, path, receipt identifier, private logs, or source-project rules.
 
 ## Repository Map
@@ -51,12 +69,15 @@ v0.1 的最小范围是合理的，但必须保持为一个小型治理闭环，
 ```text
 README.md
 LICENSE
+HERMES_LOOP.md
 skills/
+  hermes-loop-engineering/SKILL.md
   uat-reopen-intake/SKILL.md
   evidence-boundary/SKILL.md
   acceptance-scope-control/SKILL.md
   owner-boundary-triage/SKILL.md
 templates/
+  hermes_loop_review.md
   failed_gate_min.md
   accepted_scope_recheck.md
   intake_decision.md
@@ -75,6 +96,7 @@ examples/
 | `evidence-boundary` | A conclusion depends on partial, indirect, mock, or inherited evidence. | Evidence scope, unsupported claims, and missing proof. |
 | `acceptance-scope-control` | An AI is about to say `accepted`, `passed`, or `closed`. | Scope-limited receipt and uncovered dimensions. |
 | `owner-boundary-triage` | Ownership is ambiguous between feature owner, shared capability owner, data owner, or verifier. | Owner verdict based on reproduction breadth and mechanism attribution. |
+| `hermes-loop-engineering` | Repeated failures or trial observations may need reusable governance improvement. | Keep / revise / promote / drop decision for a candidate improvement. |
 
 ## Templates
 
@@ -82,6 +104,35 @@ examples/
 - `accepted_scope_recheck.md`: re-check what the original accepted receipt actually covered.
 - `intake_decision.md`: decide whether to reopen, reroute, request evidence, or reject a reopen.
 - `trial_observation.md`: record lightweight field observations before hardening a governance rule.
+- `hermes_loop_review.md`: decide whether an observed failure should become wording, template, example, forward-test, hard-gate candidate, or be dropped.
+
+## Hermes Loop Engineering
+
+Hermes Loop Engineering is the self-improvement layer in this repo. It connects delivery failures to durable governance improvements without pretending that every failure deserves a new rule.
+
+Read [HERMES_LOOP.md](HERMES_LOOP.md) for the full loop.
+
+Minimum loop:
+
+```text
+1. Capture the disputed outcome.
+2. Re-check what the evidence actually proved.
+3. Identify the smallest failed gate or missing evidence.
+4. Record a trial observation.
+5. Decide whether the pattern is one-off, repeated, or systemic.
+6. Revise wording, template, example, or skill only when evidence supports it.
+7. Forward-test the candidate change.
+8. Keep, revise, promote, or drop it.
+```
+
+The loop counts as improved only when a later agent or later delivery decision behaves better because of the updated artifact. A document edit alone is not self-improvement.
+
+Minimum proof:
+
+- the old failure or bad conclusion is visible,
+- the updated skill, template, or example changes the next decision,
+- the change does not create excessive false positives or handoff burden,
+- there is a rollback condition if the candidate proves noisy.
 
 ## Quickstart
 
@@ -117,6 +168,7 @@ skills/uat-reopen-intake
 skills/evidence-boundary
 skills/acceptance-scope-control
 skills/owner-boundary-triage
+skills/hermes-loop-engineering
 ```
 
 Keep `templates/` and `examples/` nearby as reference material, not as mandatory control-plane files.

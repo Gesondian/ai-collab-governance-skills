@@ -1,19 +1,34 @@
 # Launch Post Draft
 
-AI coding agents do not only fail by writing bad code.
+AI coding agents need a way to learn from delivery mistakes without turning every mistake into a heavy rule.
 
-They also fail by moving too fast through delivery judgment:
+I built **AI Collaboration Governance Skills** around **Hermes Loop Engineering**: a human-in-the-loop self-improvement loop for AI-assisted software delivery.
+
+The loop turns repeated delivery failures into reusable governance improvements:
+
+```text
+failure
+-> intake
+-> evidence boundary
+-> scoped failed gate
+-> trial observation
+-> skill / template refinement
+-> forward-test
+-> keep / revise / promote / drop
+```
+
+The failure modes it targets:
 
 - weak evidence becomes `accepted`
 - route reachability becomes workflow acceptance
 - mock data becomes business correctness
 - a user reopen becomes an immediate patch
 - a shared import becomes shared-owner blame
+- a repeated mistake becomes either ignored noise or an over-heavy rule
 
-I built **AI Collaboration Governance Skills** as a small skill pack for that gap.
+It contains five skills:
 
-It contains four skills:
-
+- `hermes-loop-engineering`: decide whether a failure becomes observation, wording, template, example, forward-test, hard-gate candidate, or is dropped
 - `uat-reopen-intake`: handle reopened or disputed acceptance before repair
 - `evidence-boundary`: state what evidence can and cannot prove
 - `acceptance-scope-control`: keep `accepted`, `passed`, `closed`, `ready`, and `done` scoped to verified dimensions
@@ -21,6 +36,7 @@ It contains four skills:
 
 The pack also includes lightweight templates for:
 
+- `hermes_loop_review`
 - `failed_gate_min`
 - `accepted_scope_recheck`
 - `intake_decision`
@@ -28,14 +44,9 @@ The pack also includes lightweight templates for:
 
 The goal is not to create a heavy project-management framework.
 
-The goal is to help agents pause before the most expensive mistakes:
+The goal is to make the collaboration loop improve while staying lightweight: observe first, harden only after repeated proof.
 
-```text
-fix before intake
-accept before evidence
-route before mechanism
-harden rules before repeated proof
-```
+The self-improvement claim is intentionally evidence-based: a document edit is not enough. The loop only counts as improved when a later agent or later delivery decision behaves better under a forward-test or real follow-up case.
 
 v0.1 is intentionally small. It includes synthetic examples and has passed an initial three-scenario forward test:
 
@@ -48,7 +59,7 @@ If you are using AI agents in enterprise software delivery, QA, UAT, or workflow
 Suggested post title:
 
 ```text
-AI agents need governance skills, not just coding skills
+AI agents need self-improving governance loops, not just coding skills
 ```
 
 Short version:
@@ -56,34 +67,29 @@ Short version:
 ```text
 I published a small skill pack for AI-assisted software delivery:
 
-AI Collaboration Governance Skills helps agents avoid accepting weak evidence, fixing before UAT intake, and assigning owners without mechanism proof.
+AI Collaboration Governance Skills introduces Hermes Loop Engineering: a human-in-the-loop self-improvement loop that turns delivery failures into reusable governance skills.
 
-It focuses on UAT reopen intake, evidence boundaries, acceptance scope control, and owner-boundary triage.
+It focuses on UAT reopen intake, evidence boundaries, acceptance scope control, owner-boundary triage, and keep/revise/promote/drop decisions for candidate improvements.
 ```
 
 ## X / Twitter Version
 
 ```text
-AI coding agents do not only fail by writing bad code.
+AI coding agents need a way to learn from delivery mistakes without turning every mistake into a hard rule.
 
-They also fail by moving too fast through delivery judgment:
+I published a small skill pack around Hermes Loop Engineering:
+a human-in-the-loop self-improvement loop for AI-assisted software delivery.
 
-- weak evidence -> accepted
-- mock data -> workflow accepted
-- user reopen -> immediate patch
-- shared import -> shared-owner blame
+It helps agents turn failures into reusable governance improvements:
 
-I published a small skill pack for this gap:
-AI Collaboration Governance Skills
+failure -> intake -> evidence boundary -> trial observation -> skill/template refinement -> forward-test -> keep/revise/promote/drop
 
 It focuses on:
+- Hermes Loop review
 - UAT reopen intake
 - evidence boundaries
 - acceptance scope control
 - owner-boundary triage
-
-The goal is simple:
-help agents pause before they fix, accept, route, or harden rules.
 
 Repo:
 https://github.com/Gesondian/ai-collab-governance-skills
@@ -101,22 +107,21 @@ The repeated pattern I see:
 - Mock data becomes real business confidence
 - A user reopening acceptance becomes an immediate patch
 - A shared import becomes shared-owner blame
+- A repeated failure becomes either ignored noise or an over-heavy rule
 
-I published a small public skill pack called AI Collaboration Governance Skills.
+I published a small public skill pack called AI Collaboration Governance Skills, built around Hermes Loop Engineering.
 
-It is not a project-management framework. It is a set of lightweight agent skills for the judgment points around AI-assisted software delivery:
+Hermes Loop Engineering is a human-in-the-loop self-improvement loop for AI-assisted software delivery governance:
 
+failure -> intake -> evidence boundary -> scoped failed gate -> trial observation -> skill/template refinement -> forward-test -> keep/revise/promote/drop
+
+It is not automatic model training and it is not a project-management framework. It is a lightweight way to help the collaboration system improve from repeated delivery mistakes.
+
+- `hermes-loop-engineering`: decide whether an observed failure should become wording, a template, an example, a forward-test, a hard-gate candidate, or be dropped
 - `uat-reopen-intake`: handle disputed or reopened acceptance before repair
 - `evidence-boundary`: state what evidence can and cannot prove
 - `acceptance-scope-control`: keep `accepted`, `passed`, `closed`, `ready`, and `done` scoped to verified dimensions
 - `owner-boundary-triage`: assign owners only when reproduction breadth and mechanism attribution support it
-
-The goal is to help AI agents pause before the expensive mistakes:
-
-fix before intake
-accept before evidence
-route before mechanism
-harden rules before repeated proof
 
 v0.1 is intentionally small, synthetic, and public.
 
@@ -130,15 +135,19 @@ https://github.com/Gesondian/ai-collab-governance-skills
 ```text
 I made a small skill pack for AI-assisted software delivery governance.
 
-The problem it targets is not "AI writes bad code". It is the delivery judgment around code:
+The core idea is Hermes Loop Engineering: a human-in-the-loop self-improvement loop for turning repeated delivery failures into reusable governance improvements.
+
+The problem it targets is not only "AI writes bad code". It is the delivery judgment around code:
 
 - accepting weak evidence
 - treating mock data as real workflow proof
 - fixing immediately when a user reopens acceptance
 - assigning shared owners from imports or file paths
+- hardening rules before observing repetition and false-positive risk
 
-The repo contains four small skills:
+The repo contains five small skills:
 
+- Hermes Loop Engineering
 - UAT reopen intake
 - evidence boundary
 - acceptance scope control
