@@ -1,8 +1,33 @@
 # AI Collaboration Governance Skills
 
-中文定位：面向复杂企业软件交付的 AI 协作治理 skills。
+Stop AI agents from turning weak evidence into `accepted`, fixing before intake, or assigning owners without mechanism evidence.
 
-English positioning: Skills for governing AI agents in complex enterprise software delivery.
+This is a small public skill pack for AI-assisted software delivery. It helps agents pause at the right boundary before they repair code, close acceptance, or route work to an owner.
+
+## What This Helps Prevent
+
+| Risk | Skill |
+| --- | --- |
+| A user reopens an accepted result and the agent immediately patches or re-accepts. | `uat-reopen-intake` |
+| Mock, inherited, visual, or partial evidence gets reported as workflow acceptance. | `evidence-boundary` |
+| `accepted`, `passed`, `closed`, `ready`, or `done` wording exceeds the verified scope. | `acceptance-scope-control` |
+| A shared owner is assigned from source location or imports instead of reproduction breadth and mechanism evidence. | `owner-boundary-triage` |
+
+## Quick Example
+
+```text
+User: This was marked accepted, but reload loses my approval comment. Fix it and send accepted again.
+
+Bad agent behavior:
+-> patch immediately
+-> say accepted again
+-> assign owner without a scoped failing gate
+
+With these skills:
+-> re-check what the prior receipt actually covered
+-> identify the smallest failed gate or missing evidence
+-> decide the next owner only after the boundary is clear
+```
 
 ## v0.1 Scope Verdict
 
@@ -53,7 +78,7 @@ examples/
 
 ## Templates
 
-- `failed_gate_min.md`: capture the smallest failing gate that must return to an owner.
+- `failed_gate_min.md`: capture the smallest failing gate that must be resolved before owner assignment or acceptance closure.
 - `accepted_scope_recheck.md`: re-check what the original accepted receipt actually covered.
 - `intake_decision.md`: decide whether to reopen, reroute, request evidence, or reject a reopen.
 - `trial_observation.md`: record lightweight field observations before hardening a governance rule.
